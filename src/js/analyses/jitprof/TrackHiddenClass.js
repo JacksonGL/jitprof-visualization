@@ -327,77 +327,28 @@
             ret.addInfo = JSON.stringify(additionalInfo);
             sandbox.DLint.addWarnings(warnings);
             */
-
-            sandbox.log('\n\n');
             sandbox.log("---------------------------");
             sandbox.log("Created " + count + " hidden classes.");
             sandbox.log('Total # of functions: ' + f_count);
-            
-            sandbox.log();
-            var tmp = [];
-            for (var iid in info) {
-                if (HOP(info, iid)) {
-                    var tmpRank = getRank(info[iid]);
-                    tmp.push({
-                        iid: iid,
-                        count: info[iid].miss,
-                        meta: info[iid],
-                        rank: tmpRank
-                    });
+
+            // var stringInfo = JSON.stringify(info);
+            // flatten idToHiddenClass
+            var flat_idToHiddenClass = [];
+            for (var i=0;i<idToHiddenClass.length;i++) {
+                if(idToHiddenClass[i]) {
+                    flat_idToHiddenClass[i] = getLayout(idToHiddenClass[i]);
                 }
             }
-            sort.call(tmp, function(a, b) {
-                return b.rank - a.rank;
-            });
-            var len = tmp.length;
-            var num = 0;
-            var layout_num = 0;
-            for (var i = 0; i < len && i < warning_limit; i++) {
-                var x = tmp[i];
-                if (x.count > MIN_CACHE_HITS) {
-                    var meta = x.meta;
-                    num++;
-                    sandbox.log("<b>property access at " + iidToLocation(x.iid) + " has missed cache " + x.count + " time(s).</b>");
-                    var access_report_num = 0;
-                    print_access:
-                    for (var loc in meta.objectLocs) {
-                        if (HOP(meta.objectLocs, loc)) {
-                            if(access_report_num >= access_report_threshold) {
-                                sandbox.log('...');
-                                break;
-                            }
-                            sandbox.log("  accessed property \"" + meta.lastKey.substring(meta.lastKey.indexOf(":") + 1) + "\" of object created at " + iidToLocation(loc) + " " + meta.objectLocs[loc] + " time(s) ");
-                            access_report_num++;
-                        }
-                    }
-                    var mergeDB = {};
-                    layout_num = 0;
-                    
-                    layout_print:
-                    for (var hiddenKey in meta.keysToCount) {
-                        if (HOP(meta.keysToCount, hiddenKey)) {
-                            if(layout_num >= layout_print_threshold) {
-                                mergeDB[layout] += '<div>...</div>';
-                                break layout_print;
-                            }
-                            var hiddenIdx = parseInt(hiddenKey.substring(0, hiddenKey.indexOf(":")));
-                            var hidden = idToHiddenClass[hiddenIdx];
-                            var layout = getLayout(hidden);
-                            var fieldName = hiddenKey.substring(hiddenKey.indexOf(":") + 1, hiddenKey.length);
-                            if (!mergeDB[layout]) {
-                                mergeDB[layout] = "<div> &nbsp; layout [" + getLayout(hidden) + "]:</div>";
-                            }
-                            mergeDB[layout] += '\n' + '\t<div> &nbsp; &nbsp; put field: ' + fieldName + ' observed ' + meta.keysToCount[hiddenKey] + " time(s)</div>";
-                            layout_num++;
-                        }
-                    }
-                    for (var layout in mergeDB) {
-                        if (HOP(mergeDB, layout)) {
-                            sandbox.log(mergeDB[layout]);
-                        }
-                    }
-                }
-            }
+            var idToHiddenClassInfo = JSON.stringify(flat_idToHiddenClass);
+            var msg_object = {
+                'hidden-class-tracker-id-to-hidden': flat_idToHiddenClass,
+                'hidden-class-tracker-meta': info
+            };
+
+            // call the visualization method in 
+            // the frame page to generate diagram
+            document.getElementById('jalangi_results_frame')
+                .contentWindow.visualize_data(msg_object);
         };
 
     }
