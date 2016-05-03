@@ -1,0 +1,80 @@
+<!-- pre.html nothing for now -->
+<style type="text/css">
+.JalangiButton {
+    background-color: #528BA0;
+    opacity: 0.8;
+    -webkit-border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 5px 16px;
+    text-decoration: none;
+    font-family: calibri;
+    top: 10px;
+    text-decoration: none;
+    border: 1px solid white;
+    text-shadow: 0px 0px white;
+}
+.JalangiButton:hover {
+    background-color:#308c99;
+    text-decoration: none;
+    color: white;
+    opacity: 1;
+}
+.JalangiButton:active {
+    position:relative;
+    top:1px;
+}
+</style>
+<div id="jalangi_results_show_button"
+     style="float: left;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 50px;
+        height: 20px;
+        z-index: 10003;
+        -moz-opacity: 0.8;
+        opacity: .80;
+        filter: alpha(opacity=80);">
+    <!--<button type="button" style="font-style:normal; font-size:18px; background-color:lightblue;"
+            href="javascript:void(0)"
+            onclick="J$.Results.showHideResults()">
+        Visualize
+    </button>-->
+    <a href="#" class="JalangiButton" onclick="J$.Results.showHideResults()">Visualize</a>
+</div>
+
+<iframe id="jalangi_results_frame"
+     style="background-color: white; position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:10005; display: none;">
+</iframe>
+
+<script type="text/javascript">
+    (function() {
+        if (typeof J$ === 'undefined') J$ = {};
+        J$.Results = {};
+        var iframe = document.getElementById('jalangi_results_frame');
+        //[_[
+        (function() {
+            var content = fileExpand("frame.html");
+            return "var frameHtml = " + JSON.stringify(content).replace(/</g, "\x5Cx3c") + ";\n";
+        })
+        //]_]
+        iframe.contentWindow.document.open();
+        iframe.contentWindow.document.write(frameHtml);
+        iframe.contentWindow.document.close();
+        J$.Results.showHideResults = function () {
+            if (iframe.style.display !== 'block') {
+                iframe.style.display = 'block';
+                J$.Results.execute(function(div, jquery, editor){div.empty();});
+                if (typeof J$.endExecution === 'function') J$.endExecution();
+            } else {
+                iframe.style.display = 'none';
+            }
+        };
+    }());
+</script>
+
+
+

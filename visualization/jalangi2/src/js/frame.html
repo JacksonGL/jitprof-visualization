@@ -1,0 +1,1348 @@
+<html>
+<style type="text/css">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/datatables/media/css/jquery.dataTables.min.css")
+    }
+    
+    ) //]_]
+</style>
+<style type="text/css">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/codemirror/lib/codemirror.css")
+    }
+    
+    ) //]_]
+</style>
+<style type="text/css">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/codemirror/theme/blackboard.css")
+    }
+    
+    ) //]_]
+</style>
+<style type="text/css">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/nanoscroller/bin/css/nanoscroller.css")
+    }
+    
+    ) //]_]
+</style>
+<style type="text/css">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/codemirror/addon/scroll/simplescrollbars.css")
+    }
+    
+    ) //]_]
+</style>
+<style type="text/css">
+    .CodeMirror {
+        border: 1px solid black;
+        height: auto;
+    }
+    
+    body {
+        background-color: #0C1021;
+        overflow: hidden;
+    }
+    
+    .styled-background {
+        background-color: midnightblue;
+    }
+    /* style of the close button */
+    
+    .x {
+        position: relative;
+        width: 23px;
+        height: 23px;
+        border: 2px solid #eef5df;
+        background-color: #ff5248;
+        border-radius: 50%;
+    }
+    
+    .x::before,
+    .x::after {
+        position: absolute;
+        top: 10px;
+        left: 5px;
+        width: 13px;
+        height: 3px;
+        content: "";
+        background-color: #eef5df;
+        display: block;
+    }
+    
+    .x::before {
+        -ms-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    
+    .x::after {
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    
+    .x:hover {
+        cursor: pointer;
+    }
+    
+    .x:hover::before,
+    .x:hover::after {
+        top: 10px;
+        left: 4px;
+        width: 15px;
+        height: 3px;
+    }
+    /* style of the scrollbar from nanscroller.js */
+    
+    .nano-slider {
+        background: #bcd !important;
+    }
+    
+    #jalangi_results_window {
+        color: white;
+        font-size: 11px;
+        font-family: 'Open Sans', sans-serif;
+        text-shadow: 0px 0px 10px #000;
+    }
+    
+    #jalangi_results_window a {
+        color: yellow;
+        text-decoration: initial;
+    }
+    /* jsPlumb curved line Endpoint */
+    
+    .jsplumb-endpoint {
+        z-index: 10;
+        opacity: 0.8;
+        stroke: yellow;
+    }
+    /* jsPlumb curved line Connector */
+    
+    .jsplumb-connector {
+        z-index: 10;
+        opacity: 0.7;
+        stroke: yellow;
+    }
+    /* jsPlumb curved line Endpoint */
+    
+    .jsplumb-overlay {
+        z-index: 10;
+        opacity: 0.5;
+        stroke: white;
+    }
+    /* style of rectangles in the layout graph */
+    
+    .layout_prop {
+        stroke: white;
+        stroke-width: 0px;
+    }
+    /* d3 tooltip */
+    
+    .d3-tip {
+        line-height: 1;
+        /* font-weight: bold; */
+        font-family: 'Open Sans', sans-serif;
+        font-size: 11px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        border-radius: 2px;
+    }
+    /* Creates a small triangle extender for the tooltip */
+    
+    .d3-tip:after {
+        box-sizing: border-box;
+        display: inline;
+        font-size: 10px;
+        width: 100%;
+        line-height: 1;
+        color: rgba(0, 0, 0, 0.8);
+        content: "\25BC";
+        position: absolute;
+        text-align: center;
+    }
+    /* Style northward tooltips differently */
+    
+    .d3-tip.n:after {
+        margin: -1px 0 0 0;
+        top: 100%;
+        left: 0;
+    }
+    /* layout line chart's line */
+    
+    .layout_line {
+        stroke: yellow;
+        stroke-width: 2px;
+        opacity: 0.6;
+    }
+    
+    .y text {
+        font: 9pt;
+        font-family: 'Courier New';
+        font-weight: bold;
+        fill: white;
+    }
+    
+    .x text {
+        font-weight: normal;
+        font: 7pt sans-serif;
+        'Open Sans',
+        sans-serif;
+        fill: white;
+    }
+    
+    .axisTitle {
+        font-size: 9pt !important;
+        cursor: default;
+    }
+    
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: grey;
+        shape-rendering: crispEdges;
+    }
+    
+    .y.axis path,
+    .y.axis line {
+        stroke: none;
+    }
+    
+    rect {
+        fill: #88A5D4;
+        /* stroke: black; */
+    }
+    /* class of bars for showing the frequency of inline cache miss*/
+    
+    .cacheMissBar {
+        opacity: 0.9;
+    }
+    
+    .layoutNumBar {
+        opacity: 1;
+        fill: orange;
+    }
+    
+    .alignLine {
+        stroke: white;
+        stroke-width: 1px;
+        fill: none;
+    }
+    /* vertical for vertical sankey */
+    
+    .node rect {
+        cursor: move;
+        fill-opacity: .9;
+        shape-rendering: crispEdges;
+    }
+    
+    .node text {
+        pointer-events: none;
+        text-shadow: 0 1px 0 #fff;
+    }
+    
+    .link {
+        fill: green;
+        opacity: 0.5;
+        /*stroke: #000;*/
+        stroke-opacity: .5;
+    }
+    
+    .link:hover {
+        stroke-opacity: .8;
+    }
+    
+    .desc {
+        line-height: 1;
+        /* font-weight: bold; */
+        font-family: 'Open Sans', sans-serif;
+        font-size: 11px;
+        padding: 10px;
+        color: #fff;
+        margin-left: 80px;
+        height: 30px;
+        width: 200px;
+    }
+
+    .desc_item {
+        display: block;
+    }
+
+    .desc_item > .desc_label {
+        font-weight: bold;
+        display: inline;
+    }
+
+    .desc_item > .desc_value {
+        font-weight: bold;
+        color: red;
+        display: inline;
+    }
+</style>
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/jquery/dist/jquery.min.js")
+    })
+    //]_]
+</script>
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/nanoscroller/bin/javascripts/jquery.nanoscroller.js")
+    })
+    //]_]
+</script>
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/datatables/media/js/jquery.dataTables.min.js")
+    })
+    //]_]
+</script>
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/codemirror/lib/codemirror.js")
+    })
+    //]_]
+</script>
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/codemirror/addon/scroll/simplescrollbars.js")
+    })
+    //]_]
+</script>
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/codemirror/mode/javascript/javascript.js")
+    })
+    //]_]
+</script>
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/jsPlumb-2.0.7.js")
+    })
+    //]_]
+</script>
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/d3/d3.min.js")
+    })
+    //]_]
+</script>
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/vis.js")
+    })
+    //]_]
+</script>
+<!-- d3 tooltip -->
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/d3.tip.v0.6.3.js")
+    })
+    //]_]
+</script>
+<!-- d3 vertical sankey plugin -->
+<script type="text/javascript">
+    //[_[
+    (function () {
+        return fileExpand("../../node_modules/sankey.js")
+    })
+    //]_]
+</script>
+<script>
+    var visConfig = {
+        transitionDuration: 10,
+        layout_freq_bar: {
+            background_color: "orange",
+            highlight_background_color: "#88A5D4"
+        },
+        layout_freq_connection: {
+            highlight_opacity: 0.8,
+            opacity: 0.5
+        }
+    };
+
+    function highlightLayout(hid) {
+        var elm = document.getElementById(hid + "_layout_freq_connection");
+        if (elm) {
+            // d3.select(elm)
+            //     .style("opacity", visConfig.layout_freq_connection.highlight_opacity);
+            elm.style.opacity = visConfig.layout_freq_connection.highlight_opacity;
+        }
+        var elm2 = document.getElementById(hid + "_freq");
+        if (elm2) {
+            // d3.select(elm2)
+            //     .style("fill", visConfig.layout_freq_bar.highlight_background_color);
+            elm2.style.fill = visConfig.layout_freq_bar.highlight_background_color;
+            var layout_access_num = getAttrFloatVal(elm2, "freq");
+            var layout_access_total_num = getAttrFloatVal(elm2, "total_freq");
+            var percent_access = (0|(layout_access_num * 10000 / layout_access_total_num))/100 + "%";
+            $("#layout_graph_desc").html(
+                "<div class=\"desc_item\"><div class=\"desc_label\"># access of this layout:<\/div><div class=\"desc_value\"> " + layout_access_num + "<\/div><\/div>" + 
+                "<div class=\"desc_item\"><div class=\"desc_label\">Total access:<\/div><div class=\"desc_value\"> " + layout_access_total_num + "<\/div><\/div>" + 
+                "<div class=\"desc_item\"><div class=\"desc_label\">Percent of access: <\/div><div class=\"desc_value\"> " + percent_access + "<\/div><\/div>"
+                );
+        }
+    }
+
+    function dishighlightLayout(hid) {
+        var elm = document.getElementById(hid + "_layout_freq_connection");
+        if (elm) {
+            /* d3.select(elm)
+                .transition()
+                .duration(visConfig.transitionDuration)
+                .style("opacity", visConfig.layout_freq_connection.opacity);
+            */
+            elm.style.opacity = visConfig.layout_freq_connection.opacity;
+        }
+        var elm2 = document.getElementById(hid + "_freq");
+        if (elm2) {
+            /* d3.select(elm2)
+                .transition()
+                .duration(visConfig.transitionDuration)
+                .style("fill", visConfig.layout_freq_bar.background_color);
+            */
+            elm2.style.fill = visConfig.layout_freq_bar.background_color;
+        }
+        // clear the textual description
+        $("#layout_graph_desc").html("");
+    }
+
+    function iidToDisplayCodeLocation(gid, startElmId) {
+        var ret, arr, sid, iid;
+        if (parent.J$.smap) {
+            if (typeof gid === 'string' && gid.indexOf(':') >= 0) {
+                sid = gid.split(':');
+                iid = parseInt(sid[1]);
+                sid = parseInt(sid[0]);
+                if ((ret = parent.J$.smap[sid])) {
+                    var code = ret.code;
+                    editor.setValue(code);
+                    arr = ret[iid];
+                    if (arr) {
+                        editor.markText({
+                            line: arr[0] - 1,
+                            ch: arr[1] - 1
+                        }, {
+                            line: arr[2] - 1,
+                            ch: arr[3] - 1
+                        }, {
+                            className: "styled-background"
+                        });
+                        editor.setCursor({
+                            line: arr[2] - 1,
+                            ch: arr[3] - 1
+                        });
+                        editor.scrollIntoView(null, 400);
+                        if (startElmId) {
+                            createConnection(startElmId);
+                        } else {
+                            createConnection(gid);
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+
+    function getTextFromCode(gid) {
+        var ret, arr, sid, iid, lines, startCol, endCol;
+        if (parent.J$.smap) {
+            if (typeof gid === 'string' && gid.indexOf(':') >= 0) {
+                sid = gid.split(':');
+                iid = parseInt(sid[1]);
+                sid = parseInt(sid[0]);
+                if ((ret = parent.J$.smap[sid])) {
+                    lines = ret.code.split('\n');
+                    arr = ret[iid];
+                    ret = [];
+                    for (var i = (arr[0] - 1); i <= (arr[2] - 1); i++) {
+                        // first line
+                        startCol = 0;
+                        endCol = lines[i].length;
+                        if (i === (arr[0] - 1)) { // first line
+                            startCol = (arr[1] - 1);
+                        }
+                        if (i === (arr[2] - 1)) { // last line
+                            endCol = (arr[3] - 1);
+                        }
+                        ret.push(lines[i].substring(startCol, endCol));
+                    }
+                    return ret.join('\n');
+                }
+            }
+        }
+        return null;
+    }
+
+    // function for creating the shadow
+    // effect of rectangles
+    function createDropShadow(svg) {
+        // define the shadow filter
+        // filters go in defs element
+        var defs = svg.append("defs");
+
+        // create filter with id #drop-shadow
+        // height=130% so that the shadow is not clipped
+        var filter = defs.append("filter")
+            .attr("id", "drop-shadow")
+            .attr("height", "130%");
+
+        // define the color of the shadow
+        var feComponentTransfer = filter.append("feComponentTransfer")
+            .attr("in", "SourceAlpha");
+        feComponentTransfer.append("feFuncR")
+            .attr("type", "discrete")
+            .attr("tableValues", 1);
+        feComponentTransfer.append("feFuncG")
+            .attr("type", "discrete")
+            .attr("tableValues", 1);
+        feComponentTransfer.append("feFuncB")
+            .attr("type", "discrete")
+            .attr("tableValues", 1);
+
+        // SourceAlpha refers to opacity of graphic that this filter will be applied to
+        // convolve that with a Gaussian with standard deviation 3 and store result
+        // in blur
+        filter.append("feGaussianBlur")
+            // .attr("in", "SourceAlpha")
+            .attr("stdDeviation", 1) // shadow radius
+            .attr("result", "blur");
+
+        // translate output of Gaussian blur to the right and downwards with 2px
+        // store result in offsetBlur
+        filter.append("feOffset")
+            .attr("in", "blur")
+            .attr("dx", 0)
+            .attr("dy", 0)
+            .attr("result", "offsetBlur");
+
+        // overlay original SourceGraphic over translated blurred opacity by using
+        // feMerge filter. Order of specifying inputs is important!
+        var feMerge = filter.append("feMerge");
+
+        feMerge.append("feMergeNode")
+            .attr("in", "offsetBlur")
+        feMerge.append("feMergeNode")
+            .attr("in", "SourceGraphic");
+    }
+
+    function parse_layout(layout_string) {
+        var ret = [];
+        var prop_strs = layout_string.split('|');
+        for (var i = 0; i < prop_strs.length; i++) {
+            var prop_str = prop_strs[i];
+            var prop = prop_str.split(':');
+            if (prop[0] !== undefined &&
+                prop[1] !== undefined) {
+                ret.push({
+                    prop_name: prop[0],
+                    prop_type: prop[1]
+                });
+            }
+        }
+        return ret;
+    }
+
+    function gen_layout_graph_data(data, layout_dict) {
+        var layout_graph_dataset = [];
+        var layout_idx = 0;
+        var max_num_prop = 0;
+        var layout_cache = {};
+        for (var prop in data) {
+            if (data.hasOwnProperty(prop)) {
+                // extract the layout id
+                var layout_id = prop.substring(0, prop.indexOf(":"));
+                layout_id = parseInt(layout_id, 10);
+                // iterate over all properties in the layout
+                var layout_str = layout_dict[layout_id];
+                // parse the layout and push each property into the dataset
+                var layout = parse_layout(layout_str);
+                if (layout_cache[layout_str]) {
+                    continue;
+                } else {
+                    layout_cache[layout_str] = true;
+                }
+                max_num_prop = Math.max(max_num_prop, layout.length);
+                for (var prop_idx = 0; prop_idx < layout.length; prop_idx++) {
+                    layout_graph_dataset.push({
+                        layout_idx: layout_idx,
+                        prop_idx: prop_idx,
+                        prop_name: layout[prop_idx].prop_name,
+                        prop_type: layout[prop_idx].prop_type,
+                        layout_str: layout_str,
+                        layout: layout,
+                        layout_id: layout_id
+                    });
+                }
+                layout_idx++;
+            }
+        }
+        layout_graph_dataset.max_num_prop = max_num_prop;
+        return layout_graph_dataset;
+    }
+
+    function get_actual_type_idx(type) {
+        if (type === undefined) {
+            return "black";
+        }
+        if (type.indexOf('f') === 0) {
+            // return 'function';
+            return 0;
+        } else if (type.indexOf('n') === 0) {
+            // return 'number';
+            return 1000;
+        } else if (type.indexOf('s') === 0) {
+            // return 'string';
+            return 2000;
+        } else if (type.indexOf('b') === 0) {
+            // return 'boolean';
+            return 3000;
+        } else if (type.indexOf('o') === 0) {
+            // return 'object';
+            return 5000;
+        } else {
+            console.log(type);
+        }
+    }
+
+    function vary_color(name, type) {
+        if (type.indexOf('f') === 0) {
+            name += type.substring(1, type.length);
+        }
+        var charCodeTotal = 0;
+        for (var i = 0; i < name.length; i++) {
+            charCodeTotal += name.charCodeAt(i);
+        }
+        return 0 | (charCodeTotal * 1000 / (4000 * name.length)) + name.length * 2;
+    }
+
+    function render_layout_graph(config, margin, svg, g, dataset, callbackForConnections) {
+
+        // initialize tooltip
+        var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html(function (d) {
+                return "<strong>name:</strong> <span style='color:red'>" + d.prop_name + "</span></br><strong>Type:</strong> <span style='color:red'>" + d.prop_type + "</span>";
+            })
+        svg.call(tip);
+
+        // domain: function, number, string, boolean, undefined, object 
+        var color = d3.scale.ordinal()
+            //.domain(['function', 'number', 'string', 'boolean', 'undefined', 'object'])
+            .domain([0, 1000, 2000, 3000, 4000, 5000])
+            .range(["#ff8c00", "#98abc5", "#8a89a6", "#a05d56", "#7b6888", "#6b486b", "#d0743c"]);
+
+
+        var bars = g.selectAll("rect.layout_prop").data(dataset);
+        bars.enter().append("rect")
+            .attr("class", "layout_prop")
+            .attr("name", function (d) {
+                return d.prop_name + ":" + d.prop_type;
+            });
+
+        bars.on("mouseover", function (d) {
+                var elms = document.getElementsByName(d.prop_name + ":" + d.prop_type);
+                if (elms) {
+                    d3.selectAll(elms)
+                        .transition()
+                        .style("stroke-width", 1);
+                }
+                highlightLayout(d.layout_id);
+                //.style("fill", "yellow");
+                tip.show.apply(this, arguments);
+            })
+            .on("mouseout", function (d) {
+                var elms = document.getElementsByName(d.prop_name + ":" + d.prop_type);
+                if (elms) {
+                    d3.selectAll(elms)
+                        .transition()
+                        .style("stroke-width", 0)
+                        /*.style("fill", function (d) {
+                            var type = get_actual_type_idx(d.prop_type);
+                            return color(type + vary_color(d.prop_name, d.prop_type));
+                        });*/
+                }
+                dishighlightLayout(d.layout_id);
+                tip.hide(this, arguments);
+            });
+
+        /*
+        bars.enter()
+            .append("text")
+            .text(function (d) {
+                return d.prop_name + ":" + d.prop_type;
+            })
+        */
+
+        $("#layout_graph").show(500);
+
+        setTimeout(function () {
+            bars.transition()
+                .delay(function (d, i) {
+                    if (d.prop_idx === 0) {
+                        return 0;
+                    }
+                    return (i * 5);
+                })
+                .attr("width", config.cell_width)
+                .attr("height", config.cell_height)
+                .attr("x", function (d, i) {
+                    return d.layout_idx * (config.cell_width + 1);
+                })
+                .attr("y", function (d) {
+                    return d.prop_idx * config.cell_height + config.freq_graph_height + margin.top;
+                })
+                .attr("id", function (d) {
+                    return d.layout_id + "_" + d.prop_idx + "_layout_prop";
+                })
+                .style("fill", function (d, i) {
+                    if (i === dataset.length - 1) {
+                        setTimeout(callbackForConnections, 1000);
+                    }
+                    var type = get_actual_type_idx(d.prop_type);
+                    return color(type + vary_color(d.prop_name, d.prop_type));
+                })
+        }, 500);
+        bars.exit().remove();
+    }
+
+    function render_hidden_class_frequency_bar(g, layout_freq) {
+        var dict = {};
+        for (var hid_info in layout_freq) {
+            if (!(layout_freq.hasOwnProperty(hid_info))) {
+                continue;
+            }
+            var hid = hid_info.substring(0, hid_info.indexOf(':'));
+            dict[hid] = (0 | (dict[hid])) + layout_freq[hid_info];
+        }
+        var dataset = [];
+        var total_freq = 0;
+        for (var hid in dict) {
+            if (!(dict.hasOwnProperty(hid))) {
+                continue;
+            }
+            dataset.push({
+                x: 0,
+                freq: dict[hid],
+                hid: hid
+            });
+        }
+        // sort the dataset
+        dataset.sort(function (a, b) {
+            return b.freq - a.freq;
+        });
+        // calcualte the x coordinate for each rectangle
+        for (var i = 0; i < dataset.length; i++) {
+            dataset[i].x = total_freq;
+            total_freq += dataset[i].freq;
+        }
+
+        var bars = g.selectAll("rect.layout_freq").data(dataset);
+        bars.enter().append("rect")
+            .attr("class", "layout_freq_bar")
+            .attr("id", function (d) {
+                return d.hid + "_freq";
+            })
+            .attr("x", function (d, i) {
+                return i + d.x * 500 / total_freq;
+            })
+            .attr("y", 10)
+            .attr("freq", function (d) {
+                return d.freq;
+            })
+            .attr("total_freq", total_freq)
+            .attr("width", function (d) {
+                return d.freq * 500 / total_freq;
+            })
+            .attr("height", function (d) {
+                return 20;
+            })
+            .style("fill", visConfig.layout_freq_bar.background_color)
+            .on("mouseover", function (d) {
+                highlightLayout(d.hid);
+            })
+            .on("mouseout", function (d) {
+                dishighlightLayout(d.hid);
+            })
+        return dataset;
+    }
+
+    function render_object_loc_frequency_bar(g, object_loc_freq) {
+        var dict = {};
+        for (var iid_info in object_loc_freq) {
+            if (!(object_loc_freq.hasOwnProperty(iid_info))) {
+                continue;
+            }
+            var iid = iid_info;
+            dict[iid] = (0 | (dict[iid])) + object_loc_freq[iid_info];
+        }
+        var dataset = [];
+        var total_freq = 0;
+        for (var iid in dict) {
+            if (!(dict.hasOwnProperty(iid))) {
+                continue;
+            }
+            dataset.push({
+                x: 0,
+                freq: dict[iid],
+                iid: iid
+            });
+        }
+        // sort the dataset
+        dataset.sort(function (a, b) {
+            return b.freq - a.freq;
+        });
+        // calcualte the x coordinate for each rectangle
+        for (var i = 0; i < dataset.length; i++) {
+            dataset[i].x = total_freq;
+            total_freq += dataset[i].freq;
+        }
+
+        var bars = g.selectAll("rect.object_loc_freq").data(dataset);
+        bars.enter().append("rect")
+            .attr("class", "layout_freq_bar")
+            .attr("id", function (d) {
+                return d.iid + "_iid_freq";
+            })
+            .attr("x", function (d, i) {
+                return i + d.x * 500 / total_freq;
+            })
+            .attr("y", 10)
+            .attr("freq", function (d) {
+                return d.freq;
+            })
+            .attr("total_freq", total_freq)
+            .attr("width", function (d) {
+                return d.freq * 500 / total_freq;
+            })
+            .attr("height", function (d) {
+                return 20;
+            })
+            .style("fill", visConfig.layout_freq_bar.background_color)
+            .on("mouseover", function (d) {
+                this.style.fill = "#88A5D4";
+                var percent_loc = (0|(d.freq * 10000 / total_freq))/100 + "%";
+                $("#layout_graph_desc").html(
+                    "<div class=\"desc_item\"><div class=\"desc_label\"># of this location:<\/div><div class=\"desc_value\"> " + d.freq + "<\/div><\/div>" + 
+                    "<div class=\"desc_item\"><div class=\"desc_label\">Total #:<\/div><div class=\"desc_value\"> " + total_freq + "<\/div><\/div>" + 
+                    "<div class=\"desc_item\"><div class=\"desc_label\">Percent of access: <\/div><div class=\"desc_value\"> " + percent_loc + "<\/div><\/div>"
+                    );
+            })
+            .on("mouseout", function (d) {
+                this.style.fill = "orange";
+                $("#layout_graph_desc").html("");
+            })
+            .on("click", function (d) {
+                iidToDisplayCodeLocation(d.iid, d.iid + "_iid_freq");
+            });
+        return dataset;
+    }
+
+    function gen_object_loc_graph(obj_loc_freq) {
+        var config = {
+            freq_graph_width: 800,
+                freq_graph_height: 20
+            };
+            var margin = {
+                left: 90,
+                top: 10,
+                right: 0,
+                bottom: 30
+            };
+
+            var outerWidth = config.freq_graph_width + margin.left + margin.right;
+            //dataset.length * config.cell_width + 50;
+            var outerHeight = margin.top + margin.bottom + config.freq_graph_height;
+            var innerWidth = outerWidth - margin.left - margin.right;
+
+            $("#object_loc_graph").hide(500).remove();
+            
+            var svg = d3.select("#jalangi_results_window").append("svg")
+                .attr("width", outerWidth)
+                .attr("height", outerHeight)
+                .attr("id", "object_loc_graph")
+                // .style("display", "none");
+            var g_object_loc = svg.append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        render_object_loc_frequency_bar(g_object_loc, obj_loc_freq);
+    }
+
+    function gen_layout_graph(layout_freq, layout_dict) {
+        var dataset = gen_layout_graph_data(layout_freq, layout_dict);
+        setTimeout(function () {
+            var config = {
+                cell_width: 7,
+                cell_height: 5,
+                freq_graph_height: 100
+            }
+            var margin = {
+                left: 90,
+                top: 10,
+                right: 0,
+                bottom: 30
+            };
+
+            var outerWidth = 600 + 50 + dataset.length * 2 + margin.left + margin.right;
+            //dataset.length * config.cell_width + 50;
+            var outerHeight = dataset.max_num_prop * config.cell_height +
+                50 + margin.top + margin.bottom + config.freq_graph_height;
+
+            var innerWidth = outerWidth - margin.left - margin.right;
+            var innerHeight = outerHeight - margin.top - margin.bottom - config.freq_graph_height;
+
+            $("#layout_graph").hide(500).remove();
+            $("#layout_graph_desc").hide(500).remove();
+
+            $("#jalangi_results_window").append("<div id=\"layout_graph_desc\" class=\"desc\"><\/div>");
+
+            var svg = d3.select("#jalangi_results_window").append("svg")
+                .attr("width", outerWidth)
+                .attr("height", outerHeight)
+                .attr("id", "layout_graph")
+                .style("display", "none");
+            var g_layout_freq = svg.append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            // var g_layout_detail = svg.append("g")
+            //    .attr("transform", "translate(" + margin.left + "," + (margin.top + config.freq_graph_height) + ")");
+            // render the hidden class frequency bar
+            var hids = render_hidden_class_frequency_bar(g_layout_freq, layout_freq);
+            var callbackForConnections = function () {
+                // connect the layout frequence graph components
+                // and the layout detailed graph
+                var connections = [];
+                for (var i = 0; i < hids.length; i++) {
+                    var hid_1 = hids[i].hid + "_freq";
+                    var hid_2 = hids[i].hid + "_0_layout_prop";
+                    var elem1 = document.getElementById(hid_1);
+                    var elem2 = document.getElementById(hid_2);
+                    connections.push({
+                        source: elem1,
+                        target: elem2,
+                        hid: hids[i].hid
+                    });
+                }
+
+                var links = g_layout_freq.selectAll(".link").data(connections);
+                    
+                links.enter().append("path")
+                    .attr("class", "link")
+                    .style("opacity", 0)
+                    .attr("d", sankeylinkRect)
+                    .attr("id", function (d) {
+                        return d.hid + "_layout_freq_connection";
+                    })
+                    .on("mouseover", function (d) {
+                        highlightLayout(d.hid);
+                    })
+                    .on("mouseout", function (d) {
+                        dishighlightLayout(d.hid);
+                    });
+                
+                links.transition().delay(function (d, i) {
+                    return (i * 5);
+                })
+                .style("opacity", visConfig.layout_freq_connection.opacity);
+            };
+            // render the layout graph
+            render_layout_graph(config, margin, svg, g_layout_freq, dataset, callbackForConnections);
+
+        }, 10);
+    }
+
+    function process(dataset) {
+        var margin = {
+            left: 130,
+            top: 0,
+            right: 30,
+            bottom: 30
+        };
+
+        var config = {
+            barHeight: 18,
+            barPadding: 0.2,
+            topAxisHeight: 40,
+            bottomAxisHeight: 30
+        };
+
+        var outerWidth = 600;
+        var outerHeight = dataset.length * config.barHeight +
+            margin.top + margin.bottom +
+            config.topAxisHeight + config.bottomAxisHeight;
+
+        var xColumn = "miss";
+        var yColumn = "title";
+
+        var innerWidth = outerWidth - margin.left - margin.right;
+        var innerHeight = outerHeight - margin.top - margin.bottom -
+            config.topAxisHeight - config.bottomAxisHeight;
+
+        var svg = d3.select("#jalangi_results_window").append("svg")
+            .attr("width", outerWidth)
+            .attr("height", outerHeight);
+        var g = svg.append("g")
+            .attr("transform", "translate(" + margin.left + "," + (margin.top + config.topAxisHeight) + ")");
+        var g2 = svg.append("g")
+            .attr("transform", "translate(" + margin.left + "," + (margin.top + config.topAxisHeight) + ")");
+        var xAxisNumLayoutG = g.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0, " + 0 + ")");
+        var xAxisG = g.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + innerHeight + ")");
+        var yAxisG = g.append("g")
+            .attr("class", "y axis");
+
+        createDropShadow(svg);
+
+        var numLayoutScale = d3.scale.linear().range([0, innerWidth]);
+        var xScale = d3.scale.linear().range([0, innerWidth]);
+        var yScale = d3.scale.ordinal().rangeBands([0, innerHeight], config.barPadding);
+
+        var xAxisNumLayout = d3.svg.axis().scale(numLayoutScale).orient("top")
+            .ticks(5) // Use approximately 5 ticks marks.
+            .tickFormat(d3.format("s")) // Use intelligent abbreviations, e.g. 5M for 5 Million
+            .outerTickSize(0); // Turn off the marks at the end of the axis.
+        var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+            .ticks(5) // Use approximately 5 ticks marks.
+            .tickFormat(d3.format("s")) // Use intelligent abbreviations, e.g. 5M for 5 Million
+            .outerTickSize(0); // Turn off the marks at the end of the axis.
+        var yAxis = d3.svg.axis().scale(yScale).orient("left")
+            .outerTickSize(0); // Turn off the marks at the end of the axis.
+
+        // add axis title
+        xAxisNumLayoutG.append("text")
+            .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate(" + (innerWidth / 2) + "," + (-25) + ")") // centre below axis
+            .attr("class", "axisTitle")
+            .text("Number of Object Layouts");
+
+        xAxisG.append("text")
+            .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate(" + (innerWidth / 2) + "," + (35) + ")") // centre below axis
+            .attr("class", "axisTitle")
+            .text("Number of Inline Cache Misses");
+
+        function render(data) {
+            numLayoutScale.domain([0, d3.max(data, function (d) {
+                return d.num_layout;
+            })]);
+            xScale.domain([0, d3.max(data, function (d) {
+                return d[xColumn];
+            })]);
+            yScale.domain(data.map(function (d) {
+                return d[yColumn];
+            }));
+
+            xAxisNumLayoutG.call(xAxisNumLayout);
+            xAxisG.call(xAxis);
+            yAxisG.call(yAxis);
+
+            var bars = g.selectAll("rect").data(data);
+            bars.enter().append("rect")
+                .attr("width", function (d) {
+                    return 0;
+                })
+                .attr("height", yScale.rangeBand())
+                .attr("class", "cacheMissBar");
+
+            bars
+                .attr("x", 0)
+                .attr("y", function (d) {
+                    return yScale(d[yColumn]);
+                })
+                .style("filter", "url(#drop-shadow)")
+                .attr("id", function (d) {
+                    return d.iid;
+                })
+                .on("click", function (d) {
+                    iidToDisplayCodeLocation(d.iid);
+                    gen_object_loc_graph(d.obj_construct_loc_freq);
+                    gen_layout_graph(d.layout_freq, d.layout_dict);
+                })
+                .on("mouseover", function (d) {
+                    d3.select(this)
+                        .transition()
+                        .style("fill", "yellow");
+                    d3.select(d.cacheMissAlignLine)
+                        .transition()
+                        .style("opacity", 1);
+                })
+                .on("mouseout", function (d) {
+                    d3.select(this)
+                        .transition()
+                        .style("fill", "#88A5D4");
+                    d3.select(d.cacheMissAlignLine)
+                        .transition()
+                        .style("opacity", 0);
+                });
+
+            bars.exit().remove();
+
+            // align dash line
+            g.selectAll(".line").data(data)
+                .enter().append("line")
+                .attr("x1", function (d, i) {
+                    d.cacheMissAlignLine = this;
+                    return xScale(d[xColumn]);
+                }) // x position of the first end of the line
+                .attr("y1", innerHeight) // y position of the first end of the line
+                .attr("x2", function (d, i) {
+                    return xScale(d[xColumn]);
+                }) // x position of the second end of the line
+                .attr("y2", function (d, i) {
+                    return yScale(d[yColumn]);
+                }) // y position of the second end of the line
+                .attr("class", "alignLine")
+                .style("stroke-dasharray", ("3, 3")) // <== This line here!!
+                .style("opacity", 0);
+
+            setTimeout(function () {
+                bars.data(data)
+                    .transition()
+                    .attr("width", function (d) {
+                        return xScale(d[xColumn]);
+                    });
+            }, 1000);
+
+            // rectangles for number of layouts
+            var layout_num_bars = g2.selectAll("rect").data(data);
+            layout_num_bars.enter().append("rect")
+                .attr("width", function (d) {
+                    return 0;
+                })
+                .attr("height", yScale.rangeBand() / 3)
+                .attr("class", "layoutNumBar")
+                .attr("x", 0)
+                .attr("y", function (d) {
+                    return yScale(d[yColumn]);
+                })
+                .on("mouseover", function (d) {
+                    d3.select(this)
+                        .transition()
+                        .style("fill", "red");
+                    d3.select(d.layoutNumAlignLine)
+                        .transition()
+                        .style("opacity", 1);
+                })
+                .on("mouseout", function (d) {
+                    d3.select(this)
+                        .transition()
+                        .style("fill", "orange");
+                    d3.select(d.layoutNumAlignLine)
+                        .transition()
+                        .style("opacity", 0);
+                });
+
+            g2.selectAll(".line").data(data)
+                .enter().append("line")
+                .attr("x1", function (d, i) {
+                    d.layoutNumAlignLine = this;
+                    return numLayoutScale(d.num_layout);
+                }) // x position of the first end of the line
+                .attr("y1", 0) // y position of the first end of the line
+                .attr("x2", function (d, i) {
+                    return numLayoutScale(d.num_layout);
+                }) // x position of the second end of the line
+                .attr("y2", function (d, i) {
+                    return yScale(d[yColumn]) + yScale.rangeBand() / 3;
+                }) // y position of the second end of the line
+                .attr("class", "alignLine")
+                .style("stroke-dasharray", ("3, 3")) // <== This line here!!
+                .style("opacity", 0);
+
+            setTimeout(function () {
+                layout_num_bars.data(data)
+                    .transition()
+                    .attr("width", function (d) {
+                        return numLayoutScale(d.num_layout);
+                    });
+            }, 1500);
+
+            /*  line chart is used for showing trends, here
+                we have no trends, show bar chart may be more appropriate
+            // construct the line chart for showing the number of layouts
+            var line = d3.svg.line()
+                .x(function (d) { 
+                    return numLayoutScale(d.num_layout); 
+                })
+                .y(function (d) { 
+                    return yScale(d[yColumn]) + (0|(config.barHeight/2)); 
+                });
+
+            g.append("path")
+                .datum(data)
+                .attr("class", "layout_line")
+                .attr("d", line);
+            */
+        }
+
+        function type(d) {
+            d.population = +d.population;
+            return d;
+        }
+        setTimeout(function () {
+            render(dataset);
+        }, 10);
+    }
+
+    function get_num_layout(mapping) {
+        var db = {},
+            hiddenClassId;
+        var cnt = 0;
+        for (var prop in mapping) {
+            if (!(mapping.hasOwnProperty(prop))) {
+                continue;
+            }
+            hiddenClassId = prop.substring(0, prop.indexOf(":"));
+            if (!(db[hiddenClassId])) {
+                db[hiddenClassId] = true;
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+    function visualize_data(meta) {
+        console.log('visualizing data...');
+        var layout_dict = meta['hidden-class-tracker-id-to-hidden'];
+        meta = meta['hidden-class-tracker-meta'];
+        // var meta_json = document.getElementById('hidden-class-tracker-meta').innerHTML;
+        // var meta = JSON.parse(meta_json);
+        // load and preprocess the data 
+        var dataset = [];
+        var prop_num = 0;
+        for (var prop in meta) {
+            if (meta.hasOwnProperty(prop) && meta[prop].miss > 100) {
+                var num_layout = get_num_layout(meta[prop].keysToCount);
+                dataset.push({
+                    iid: prop,
+                    title: getTextFromCode(prop) + " @" + prop,
+                    miss: meta[prop].miss,
+                    obj_construct_loc_freq: meta[prop].objectLocs,
+                    layout_freq: meta[prop].keysToCount,
+                    layout_dict: layout_dict,
+                    num_layout: num_layout
+                });
+                prop_num++;
+            }
+        }
+        process(dataset);
+    }
+    /*
+    // setTimeout(load_data, 10000);
+    // whenever there is a change in the raw data area, re-render the svg
+    MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+    var observer = new MutationObserver(function (mutations, observer) {
+        // fired when a mutation occurs
+        console.log(mutations, observer);
+        // ...
+        load_data();
+    });
+
+    // define what element should be observed by the observer
+    // and what types of mutations trigger the callback
+    observer.observe(document.getElementById('jalangi_results_window'), {
+      subtree: true,
+      attributes: true,
+      childList: true,
+      characterData: true
+      //...
+    });
+    */
+    function getAttrFloatVal(elm, attr) {
+        if (elm && elm.getAttributeNode)
+            return parseFloat(elm.getAttributeNode(attr).nodeValue);
+        return -1;
+    }
+
+    function sankeylinkRect(d) {
+        var curvature = .5;
+
+        // big changes here obviously, more comments to follow
+        var x0 = getAttrFloatVal(d.source, "x"),
+            y0 = getAttrFloatVal(d.source, "y") + getAttrFloatVal(d.source, "height"),
+            x1 = getAttrFloatVal(d.target, "x"),
+            y1 = getAttrFloatVal(d.target, "y"),
+            x2 = getAttrFloatVal(d.target, "x") + getAttrFloatVal(d.target, "width"),
+            y2 = getAttrFloatVal(d.target, "y"),
+            x3 = getAttrFloatVal(d.source, "x") + getAttrFloatVal(d.source, "width"),
+            y3 = getAttrFloatVal(d.source, "y") + getAttrFloatVal(d.source, "height")
+
+        // ToDo - nice to have - allow flow up or down! Plenty of use cases for starting at the bottom,
+        // but main one is trickle down (economics, budgets etc), not up
+        return "M" + x0 + "," + y0 + // start (of SVG path)
+            "C" + x0 + "," + (y0 + (y1 - y0) / 2) + // CP1 (curve control point)
+            " " + x1 + "," + (y0 + (y1 - y0) / 2) + // CP2
+            " " + x1 + "," + y1 + // 
+            "L" + x2 + "," + y2 +
+            "C" + x2 + "," + (y3 + (y2 - y3) / 2) +
+            " " + x3 + "," + (y3 + (y2 - y3) / 2) +
+            " " + x3 + "," + y3 +
+            "L" + x0 + "," + y0;
+    }
+</script>
+
+<body>
+    <a style="float:right;vertical-align: top;" href="javascript:void(0)" onclick="window.parent.document.getElementById('jalangi_results_frame').style.display='none';" class="x">
+    </a>
+    <div class="nano" style="width: 50%; height: 100%; float:left; border-style: solid; border-width:1px; overflow: hidden;">
+        <div id="jalangi_results_window" class="nano-content">
+            <h4>Results</h4>
+        </div>
+    </div>
+    <textarea id="code" name="code" style="width: 48%; height: 100%; float:right; border-style: solid;"></textarea>
+    <script>
+        // initialize scrollbar in javascript
+        $(".nano").nanoScroller();
+        $(".nano-content").css("overflow-x", "scroll");
+
+        // initialize the text editor
+        var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+            mode: 'javascript',
+            lineNumbers: true,
+            lineWrapping: true,
+            theme: 'blackboard',
+            readOnly: true,
+            scrollbarStyle: 'overlay'
+        });
+
+        parent.J$.Results.log = function (str) {
+            $('#jalangi_results_window').append(str + "<br>");
+        };
+
+        parent.J$.Results.execute = function (f) {
+            f($('#jalangi_results_window'), $, editor);
+        };
+
+        /*
+        window.addEventListener('message', function (event) {
+            msg_object = JSON.parse(event.data);
+            if (msg_object['hidden-class-tracker-meta']) {
+                visualize_data(msg_object['hidden-class-tracker-meta']);
+            }
+        }, false);
+        */
+    </script>
+</body>
+
+</html>
