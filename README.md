@@ -29,7 +29,7 @@ To run analyses with Jalangi2 on real-world websites, you need to install:
 To install, type the following commands in your console:
 ```
 git clone https://github.com/JacksonGL/jitprof-visualization.git
-cd jalangi2analyses
+cd jitprof-visualization
 npm install
 ./scripts/install_vis.sh
 ```
