@@ -1,10 +1,7 @@
 
 # JITProf Visualization
-=======================
-
 
 [Wiki](https://github.com/ksen007/jalangi2analyses/wiki) | [Configuring](https://github.com/ksen007/jalangi2analyses/wiki/Configuration) | [Checkers](https://github.com/Berkeley-Correctness-Group/DLint/wiki/DLint-Checkers) | [Develop](https://github.com/ksen007/jalangi2analyses/wiki/Developer-Guide) | [Mailing List](https://groups.google.com/forum/#!forum/dlint)
-
 
 This repository contains dynamic analyses for JavaScript code based on [Jalangi2](https://github.com/Samsung/jalangi2). It mainly consists of analyses ported from [JITProf](https://github.com/Berkeley-Correctness-Group/JITProf).
 
@@ -15,6 +12,12 @@ JITProf is a tool that tells you which part of your JavaScript code may be slow 
 For more details, see this [GitHub repository](https://github.com/Berkeley-Correctness-Group/JITProf).
 
 **Academic Resources:** [Preprint](http://www.cs.berkeley.edu/~ksen/papers/jitprof.pdf) in [ESEC/FSE'15](http://esec-fse15.dei.polimi.it/) | [Presentation Slides](http://mp.binaervarianz.de/fse2015_slides.pdf) | [Technical Report](http://www.eecs.berkeley.edu/Pubs/TechRpts/2014/EECS-2014-144.pdf) | [Bibtex](http://mp.binaervarianz.de/fse2015.html)
+
+
+Why Visualization?
+
+
+![Visualization Demo](/imgs/demo.gif?raw=true "Visualization Demo")
 
 
 Install
