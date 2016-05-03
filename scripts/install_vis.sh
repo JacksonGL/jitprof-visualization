@@ -20,11 +20,12 @@ npm install nanoscroller
 npm install connection-line
 cd node_modules
 browserify -r connection-line -o bundle.js
-cd ..
 wget https://jsplumbtoolkit.com/lib/jsPlumb-2.0.7.js
 wget http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js
 # # wget http://fonts.googleapis.com/css?family=Poiret+One
 wget http://benlogan1981.github.io/VerticalSankey/scripts/sankey.js
+
+cd ..
 
 echo "generating code..."
 # generate mid.html (temp version) from frame.html
