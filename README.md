@@ -17,7 +17,7 @@ For more details, see this [GitHub repository](https://github.com/Berkeley-Corre
 Why Visualization?
 
 
-![Visualization Demo](/imgs/demo2.gif?raw=true "Visualization Demo")
+![Visualization Demo](/imgs/demo3.gif?raw=true "Visualization Demo")
 
 
 Install
