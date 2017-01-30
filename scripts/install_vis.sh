@@ -11,7 +11,7 @@ cd node_modules/jalangi2
 npm install bootstrap
 
 # install d3
-npm install d3
+npm install d3@3.5.16
 
 # install nanoscroller
 npm install nanoscroller
